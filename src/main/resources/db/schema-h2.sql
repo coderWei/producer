@@ -1,0 +1,13 @@
+DROP TABLE IF EXISTS user;
+
+CREATE TABLE files_info
+(
+	id BIGINT(20) NOT NULL COMMENT '主键ID',
+    fileName VARCHAR(30) NULL DEFAULT NULL COMMENT '文件名称',
+    fileType INT(11) NULL DEFAULT NULL COMMENT '文件类型 1-图片 2-文件',
+    createBy VARCHAR(50) NULL DEFAULT NULL COMMENT '创建者',
+    lastUpdBy VARCHAR(50) NULL DEFAULT NULL COMMENT '修改者',
+    createTs date NULL DEFAULT NULL COMMENT '创建时间',
+    lastUpdTs date NULL DEFAULT NULL COMMENT '修改时间',
+	PRIMARY KEY (id)
+);
