@@ -1,6 +1,6 @@
 package com.tiantong.producer.controller;
 
-import com.tiantong.producer.bean.FilesInfo;
+import com.tiantong.producer.component.UpDownBean;
 import org.springframework.stereotype.Controller;
 import org.springframework.util.ObjectUtils;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -19,7 +19,7 @@ import java.util.UUID;
 public class FilesController {
 
     @Resource
-    private FilesInfo filesInfo;
+    private UpDownBean filesInfo;
 
     public static final String FILE_SEPARATE = ".";
 

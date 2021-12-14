@@ -1,37 +1,38 @@
 package com.tiantong.producer.bean;
 
 
-import com.baomidou.mybatisplus.annotation.IdType;
-import com.baomidou.mybatisplus.annotation.TableId;
-import com.baomidou.mybatisplus.annotation.TableName;
+import com.baomidou.mybatisplus.annotation.*;
+import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.Data;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 /**
  * 用户信息bean
  * @author wei
  */
+@Data
 @TableName("sys_user")
 public class SysUserBean implements Serializable {
 
     @TableId(type = IdType.ASSIGN_ID)
-    private Long id;
-
+    private String id;
     /**
      * 用户名
      */
     private String userName;
 
-//    /**
-//     * 身份 01：机构生产者 02：创新生产者
-//     */
-//    private String identity;
+    /**
+     * 身份 01：机构生产者 02：创新生产者
+     */
+    private String identitys;
 
     /**
      * 密码
      */
-    private String passWord;
+    private String password;
 
     /**
      * 密保问题1
@@ -60,78 +61,52 @@ public class SysUserBean implements Serializable {
 
     /**
      * 状态 1：已提交 2：已通过 3：审核未补正';
+     * 用户的登录状态  1开启 2禁止
      */
-    private String status;
+    private Integer status;
 
-    public String getUserName() {
-        return userName;
-    }
 
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
+    /**
+     * 文件名称
+     */
+    private String fileName;
 
-    public String getPassWord() {
-        return passWord;
-    }
+    /**
+     * 文件类型 1-图片 2-文件
+     */
+    private Integer fileType;
+    /**
+     * 创建者
+     */
+    private String createBy;
 
-    public void setPassWord(String passWord) {
-        this.passWord = passWord;
-    }
+    /**
+     * 修改者
+     */
+    private String lastUpdBy;
 
-    public String getPasswordQuestion1() {
-        return passwordQuestion1;
-    }
+    /**
+     * 创建时间
+     */
+    @TableField(fill = FieldFill.INSERT)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date createTs;
 
-    public void setPasswordQuestion1(String passwordQuestion1) {
-        this.passwordQuestion1 = passwordQuestion1;
-    }
+    /**
+     * 修改时间
+     */
+    @TableField(fill = FieldFill.INSERT_UPDATE)
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd HH:mm:ss")
+    private Date lastUpdTs;
 
-    public String getPasswordAnswer1() {
-        return passwordAnswer1;
-    }
+    /**
+     * 是否删除
+     */
+    private Integer deleteFlag;
 
-    public void setPasswordAnswer1(String passwordAnswer1) {
-        this.passwordAnswer1 = passwordAnswer1;
-    }
+    /**
+     * 用户联系方式
+     */
+    private String userLinkPhone;
 
-    public String getPasswordQuestion2() {
-        return passwordQuestion2;
-    }
-
-    public void setPasswordQuestion2(String passwordQuestion2) {
-        this.passwordQuestion2 = passwordQuestion2;
-    }
-
-    public String getPasswordAnswer2() {
-        return passwordAnswer2;
-    }
-
-    public void setPasswordAnswer2(String passwordAnswer2) {
-        this.passwordAnswer2 = passwordAnswer2;
-    }
-
-    public String getOrgId() {
-        return orgId;
-    }
-
-    public void setOrgId(String orgId) {
-        this.orgId = orgId;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
 }
