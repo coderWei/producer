@@ -7,12 +7,12 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "files")
 @Data
-public class FileAddress  {
+public class UpDownBean {
 
     /**
-     * 目录
+     * 文件存储路径
      */
-    private String address;
+    private String path;
 
 
 }
