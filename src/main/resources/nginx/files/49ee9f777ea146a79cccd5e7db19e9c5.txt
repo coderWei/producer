@@ -1,0 +1,132 @@
+redis
+docker run -itd --name redis-test -p 6379:6379 redis 
+
+关闭htyper-v
+bcdedit /set hypervisorlaunchtype off
+
+
+rbMQ
+firewall-cmd --zone=public --add-port=80/tcp --permanent 
+ZK
+
+# docker install rabbitmq
+
+docker pull rabbitmq:management
+
+docker run -d --name rabbitmq --publish 5671:5671 \ --publish 5672:5672 --publish 4369:4369 --publish 25672:25672 --publish 15671:15671 --publish 15672:15672 \rabbitmq:management
+
+docker run -d -p 5672:5672 -p 15672:15672 --name rabbitmq rabbitmq:management
+
+ http://宿主机IP:15672，默认创建了一个 guest 用户，密码也是  guest。
+ 
+ # 开启rabbitmq插件
+ rabbitmq-plugins enable rabbitmq_management
+ 
+ 
+ # docker install zookeeper
+ 
+ docker pull zookeeper
+ 
+ docker run -d -p 2181:2181 --name zookeeper zookeeper
+ 
+ firewall-cmd --zone=public --add-port=2181/tcp --permanent 
+ 
+ docker exec -it singe-zookeeper  /bin/bash
+ ./bin/zkCli.sh
+ quit
+ 
+ http://172.20.10.7:2181
+ 
+ 
+ 
+redis 本地地址
+
+172.20.10.7:6379
+
+rabbitmq 本地地址
+
+172.20.10.7:15672
+端口 5672
+
+zookeeper 本地地址
+
+:2181
+
+
+公司电脑ip：
+192.168.1.240
+
+虚拟机指定地址
+192.168.1.250
+
+172.20.10.7
+
+
+数据库MySQL：
+36.155.90.136:3306
+
+192.168.1.246:3306
+
+
+mongodb
+
+mongodb://
+36.155.91.82
+
+firewall-cmd --zone=public --add-port=5672/tcp --permanent 
+
+firewall-cmd --reload
+
+
+#exue 测试2 主站地址
+http://t2.exue.site:88
+
+#exue 运维后台地址
+http://t2.m.exue.site:88
+
+ff8080817acdb757017acdf4e3ae0002
+
+虚拟机 nat模式
+192.168.102.128
+192.168.102.129
+192.168.102.130
+
+
+
+时间段内的月份列表
+getMonthListRangeTime
+
+
+getWeekInfoWithTerm
+
+
+verifyToken
+
+
+
+http://192.168.1.209:8090/platform/achievement/getStudentAchievementStatistics?reqId=0.759407442956409
+
+//获取题目信息 作业详情需要的接口
+http://36.137.74.53:8090/platform/exerciseBook/getKnowledgeQuestionSorts?reqId=0.8502334838136032
+questions 列表
+
+
+
+//兼容线下作业
+http://36.137.74.53:8090/platform/examExercise/queryExamExerciseList?reqId=0.3620699016139295
+
+//是否支持AI阅卷功能
+http://36.137.74.53:8090/platform/paper/queryExercisePaperList?reqId=0.7544690566098609
+
+"supportFlag":0
+
+
+// 学科信息
+
+// 
+320111201011090000
+
+
+SSF 智慧校园一站通开发文档
+
+mvn install:install-file -DgroupId=com.dm -DartifactId=DmJdbcDriver -Dversion=8.1.1 -Dpackaging=jar -Dfile=D:\DmJdbcDriver18-8.1.1.193.jar
