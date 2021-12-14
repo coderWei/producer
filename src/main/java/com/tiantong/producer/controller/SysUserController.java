@@ -1,7 +1,6 @@
 package com.tiantong.producer.controller;
 
 
-import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.tiantong.producer.bean.ResponseBean;
 import com.tiantong.producer.bean.SysUserBean;
 import com.tiantong.producer.component.JWTUtil;
@@ -38,6 +37,14 @@ public class SysUserController {
         return new ResponseBean(200, "success", authorization1);
 
     }
+
+    @PostMapping("insert")
+    public ResponseBean getUserInfo(@RequestBody SysUserBean bean) {
+        service.insertSysUserService(bean);
+        return new ResponseBean(200, "success", null);
+    }
+
+
 
     @RequestMapping(path = "/401")
     @ResponseStatus(HttpStatus.UNAUTHORIZED)

@@ -7,4 +7,6 @@ public interface SysUserService {
 
     SysUserBean getOne(SysUserBean bean);
 
+    void insertSysUserService(SysUserBean bean);
+
 }

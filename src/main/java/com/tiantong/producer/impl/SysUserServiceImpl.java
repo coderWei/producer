@@ -29,4 +29,9 @@ public class SysUserServiceImpl implements SysUserService {
 
         return sysUserBean;
     }
+
+    @Override
+    public void insertSysUserService(SysUserBean bean) {
+         mapper.insert(bean);
+    }
 }

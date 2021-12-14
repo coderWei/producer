@@ -3,6 +3,7 @@ package com.tiantong.producer.component;
 import com.baomidou.mybatisplus.core.handlers.MetaObjectHandler;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.ibatis.reflection.MetaObject;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -13,6 +14,7 @@ import java.time.LocalDateTime;
  * @author wei
  */
 @Component
+@Configuration
 @Slf4j
 public class MyMetaObjectHandler implements MetaObjectHandler {
 
