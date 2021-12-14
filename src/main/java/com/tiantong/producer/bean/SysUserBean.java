@@ -3,7 +3,10 @@ package com.tiantong.producer.bean;
 
 import com.baomidou.mybatisplus.annotation.*;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -14,6 +17,9 @@ import java.util.Date;
  * @author wei
  */
 @Data
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @TableName("sys_user")
 public class SysUserBean implements Serializable {
 
@@ -37,22 +43,22 @@ public class SysUserBean implements Serializable {
     /**
      * 密保问题1
      */
-    private String passwordQuestion1;
+    private String passwordQuestion_1;
 
     /**
      * 密保1答案
      */
-    private String passwordAnswer1;
+    private String passwordAnswer_1;
 
     /**
      * 密保问题2
      */
-    private String passwordQuestion2;
+    private String passwordQuestion_2;
 
     /**
      * 密保2答案
      */
-    private String passwordAnswer2;
+    private String passwordAnswer_2;
 
     /**
      * 机构ID
@@ -64,17 +70,6 @@ public class SysUserBean implements Serializable {
      * 用户的登录状态  1开启 2禁止
      */
     private Integer status;
-
-
-    /**
-     * 文件名称
-     */
-    private String fileName;
-
-    /**
-     * 文件类型 1-图片 2-文件
-     */
-    private Integer fileType;
     /**
      * 创建者
      */
