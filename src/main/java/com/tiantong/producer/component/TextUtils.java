@@ -2,9 +2,12 @@ package com.tiantong.producer.component;
 
 
 
+import com.alibaba.druid.util.FnvHash;
 import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import org.springframework.scheduling.support.SimpleTriggerContext;
 import org.springframework.stereotype.Component;
 
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
@@ -58,6 +61,16 @@ public class TextUtils {
      * html 字符
      */
     public static final String htmlTagWeb = "<[^>]+>";
+
+    /**
+     * img 标签
+     */
+    public static final String imgTagWeb = "<img[^>]*?>";
+
+    /**
+     * img 文本
+     */
+    public static final String imgTagText = "【图片】";
 
 
     /**
@@ -150,8 +163,27 @@ public class TextUtils {
     }
 
     /**
-     * 正则匹配 ，指定的字符串
+     * 替换所有图片标签为图片文本
      */
+    public static String transImgText(String imgStr) {
+        return Pattern.compile(imgTagWeb).matcher(imgStr).replaceAll(imgTagText).trim();
+    }
+
+    /**
+     * 替换富文本开头的图片标签为文本<p><img/></p>
+     */
+    public static String transFirstImgText(String imgStr) {
+        Matcher matcher = Pattern.compile(imgTagWeb).matcher(imgStr);
+        String s = imgStr;
+        while (matcher.find()) {
+            int start = matcher.start();
+            if (start == 3) {
+                s = matcher.replaceFirst(imgTagText);
+                break;
+            }
+        }
+        return s;
+    }
     /**
      * 正则匹配 ，指定的字符串
      */
@@ -160,6 +192,12 @@ public class TextUtils {
             return false;
         }
         return Pattern.compile( "(?i)(temp)".replace("temp", key)).matcher(text).find();
+    }
+
+    public static void main(String[] args) {
+        String str = "<img src=\"/ke4/attached/W020091124524510014093.jpg\" alt=\"\" />'";
+        String s = delHtmlTag(str);
+        System.out.println(s);
     }
 
 }
